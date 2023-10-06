@@ -1,0 +1,4 @@
+name: testplagin
+version: '${version}'
+main: test.testplagin.Testplagin
+api-version: '1.19'
