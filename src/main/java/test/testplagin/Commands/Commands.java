@@ -23,6 +23,7 @@ public class Commands extends BaseCommand {
         } else {
             if (arg.length > 0){
                 plugin.getConfig().set("food", String.join(" ", arg));
+                plugin.saveConfig();
                 player.sendMessage("Eда изменина на " + plugin.getConfig().get("food"));
             } else {
                 player.sendMessage("Еда: " + plugin.getConfig().get("food"));
