@@ -14,7 +14,7 @@ public final class Testplagin extends JavaPlugin {
         Logger log = getLogger();
         log.info("CAXAPOK1");
         BukkitCommandManager manager = new BukkitCommandManager(this);
-        manager.registerCommand(new Commands());
+        manager.registerCommand(new Commands(this));
 
     }
 }
