@@ -1,10 +1,12 @@
 package test.testplagin;
 
+import org.bukkit.event.Event;
 import org.bukkit.plugin.java.JavaPlugin;
 import test.testplagin.Commands.Commands;
 
 import java.util.logging.Logger;
 import co.aikar.commands.BukkitCommandManager;
+import test.testplagin.Event.Eent;
 
 
 public final class Testplagin extends JavaPlugin {
@@ -14,7 +16,8 @@ public final class Testplagin extends JavaPlugin {
         Logger log = getLogger();
         log.info("CAXAPOK1");
         BukkitCommandManager manager = new BukkitCommandManager(this);
-        manager.registerCommand(new Commands(this));
+        manager.registerCommand(new Commands());
+        getServer().getPluginManager().registerEvents(new Eent(), this);
 
     }
 }
