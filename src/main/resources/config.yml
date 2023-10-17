@@ -1,1 +1,10 @@
 depend: [ACF]
+item:
+  -
+    material: APPLE
+    price: 1
+    count: 8
+  -
+    material: FURNACE
+    price: 10
+    count: 1
