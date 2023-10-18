@@ -1,8 +1,5 @@
-package test.testplagin.Commands;
+package test.testplagin.GUI;
 
-import co.aikar.commands.BaseCommand;
-import co.aikar.commands.annotation.CommandAlias;
-import co.aikar.commands.annotation.Default;
 import dev.triumphteam.gui.builder.item.ItemBuilder;
 import dev.triumphteam.gui.components.GuiType;
 import dev.triumphteam.gui.components.ScrollType;
@@ -12,30 +9,19 @@ import dev.triumphteam.gui.guis.ScrollingGui;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.Material;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 import test.testplagin.Testplagin;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-
-@CommandAlias("shop")
-public class Commands2 extends BaseCommand {
-
-    List<String> myList = new ArrayList<String>(Arrays.asList(Testplagin.getInstance().getConfig().getString("items").split(", ")));
-
-    Gui applygui = Gui.gui().title(Component.text("Купишь?")).type(GuiType.HOPPER).create();
-
-    @Default
-    public void shop(CommandSender sender) {
-        if (!(sender instanceof Player player)) {
-            return;
-        }
+public class guiRendeer {
+    static List<String> myList = new ArrayList<String>(Arrays.asList(Testplagin.getInstance().getConfig().getString("items").split(", ")));
+    static Gui applygui = Gui.gui().title(Component.text("Купишь?")).type(GuiType.HOPPER).create();
+    public static void mainshop(Player player){
         myList.replaceAll(s -> s.replaceAll("\\[|\\{|\\]|\\}", ""));
         ScrollingGui ShopGUI = Gui.scrolling().title(Component.text("DiamondPLS").color(TextColor.fromHexString("#35de08"))).rows(6).pageSize(45).scrollType(ScrollType.VERTICAL).create();
 
@@ -47,7 +33,7 @@ public class Commands2 extends BaseCommand {
             if(i % 3 == 0){
                 GuiItem item = ItemBuilder.from(Material.valueOf(myList.get(i).substring(9))).name(Component.text(myList.get(i).substring(9) + " - Алмазиков " + myList.get(i+1).substring(6)).color(TextColor.fromHexString("#00ffc4"))).asGuiItem(event -> {
                     event.setCancelled(true);
-                    this.applyguiwork(event, player, ShopGUI);
+                    applyguiwork(event, player, ShopGUI);
                     applygui.open(player);
                 });
                 ShopGUI.addItem(item);
@@ -55,7 +41,9 @@ public class Commands2 extends BaseCommand {
         }
         ShopGUI.open(player);
     }
-    public void applyguiwork(InventoryClickEvent rootEvent, Player player, ScrollingGui gui){
+
+
+    public static void applyguiwork(InventoryClickEvent rootEvent, Player player, ScrollingGui gui){
         int price = Integer.valueOf(myList.get(rootEvent.getSlot()*3+1).substring(6));
         int count = Integer.valueOf(myList.get(rootEvent.getSlot()*3+2).substring(6));
         GuiItem buttonshop = ItemBuilder.from(Material.GREEN_WOOL).name(Component.text("ПОКУПАЮ").color(TextColor.fromHexString("#20cc20"))).asGuiItem(event -> {
@@ -77,5 +65,4 @@ public class Commands2 extends BaseCommand {
         applygui.setItem(1,4, buttonshop);
         applygui.setItem(1,5, buttonshop);
     }
-
 }
