@@ -1,5 +1,5 @@
 depend: [ACF]
-item:
+items:
   -
     material: APPLE
     price: 1
