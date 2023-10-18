@@ -3,7 +3,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.logging.Logger;
 import co.aikar.commands.BukkitCommandManager;
-import test.testplagin.Commands.shopcom;
+import test.testplagin.commands.shopcom;
 
 
 public final class Testplagin extends JavaPlugin {

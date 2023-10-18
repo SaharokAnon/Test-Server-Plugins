@@ -1,4 +1,4 @@
-package test.testplagin.GUI;
+package test.testplagin.gui;
 
 import dev.triumphteam.gui.builder.item.ItemBuilder;
 import dev.triumphteam.gui.components.GuiType;

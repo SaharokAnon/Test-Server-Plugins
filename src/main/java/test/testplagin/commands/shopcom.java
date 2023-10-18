@@ -1,4 +1,4 @@
-package test.testplagin.Commands;
+package test.testplagin.commands;
 
 import co.aikar.commands.BaseCommand;
 import co.aikar.commands.annotation.CommandAlias;
@@ -7,7 +7,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 
-import static test.testplagin.GUI.guiRendeer.mainshop;
+import static test.testplagin.gui.guiRendeer.mainshop;
 
 
 @CommandAlias("shop")
